@@ -20,6 +20,9 @@
     --red: #e05a4b;
     --green: #5cb88a;
     --accent-alt: #9fae9d;
+    --blue: #5b8fd4;
+    --blue-dim: rgba(91,143,212,0.12);
+    --blue-border: rgba(91,143,212,0.3);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,7 +38,6 @@
     user-select: none;
   }
 
-  /* SLIDES */
   .deck { width: 100%; height: 100%; position: relative; }
 
   .slide {
@@ -52,26 +54,18 @@
     transform: translateY(20px);
   }
 
-   
   .slide.active {
     opacity: 1;
     pointer-events: all;
     transform: translateY(0);
   }
 
-  .slide-inner {
-    width: 100%;
-    max-width: 960px;
-  }
+  .slide-inner { width: 100%; max-width: 960px; }
 
-  /* NAV */
   #nav {
     position: fixed;
-    bottom: 32px;
-    right: 40px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    bottom: 32px; right: 40px;
+    display: flex; align-items: center; gap: 16px;
     z-index: 100;
   }
 
@@ -88,578 +82,182 @@
   }
   .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  #counter {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    min-width: 48px;
-    text-align: center;
-  }
+  #counter { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; font-weight: 500; min-width: 48px; text-align: center; }
 
-  /* PROGRESS */
   #progress-bar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.4s ease;
-    z-index: 100;
+    position: fixed; top: 0; left: 0;
+    height: 2px; background: var(--accent);
+    transition: width 0.4s ease; z-index: 100;
   }
 
-  /* SLIDE LABEL */
-  .slide-label {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-    font-weight: 500;
-  }
-
+  .slide-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; font-weight: 500; }
   .accent { color: var(--accent); }
   .muted { color: var(--muted); }
 
-  /* --- SLIDE 1: TITLE --- */
-  #s1 { background: var(--bg); }
-  #s1 .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 28px;
-    font-weight: 500;
-  }
-  #s1 h1 {
-    font-family: 'Barlow', sans-serif;
-    font-size: clamp(48px, 6vw, 80px);
-    font-weight: 900;
-    line-height: 1.05;
-    color: var(--text);
-    margin-bottom: 24px;
-  }
-  #s1 h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
-  #s1 .sub {
-    font-size: 18px;
-    color: var(--muted);
-    max-width: 520px;
-    line-height: 1.6;
-    margin-bottom: 48px;
-  }
-  #s1 .meta-row {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-  }
-  #s1 .meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  h2.slide-h { font-family: 'Barlow', sans-serif; font-size: clamp(30px, 3.5vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 6px; }
+  .slide-desc { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 4px; }
+
+  /* SLIDE 1 */
+  #s1 .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; font-weight: 500; }
+  #s1 h1 { font-family: 'Barlow', sans-serif; font-size: clamp(48px, 6vw, 80px); font-weight: 900; line-height: 1.05; color: var(--text); margin-bottom: 24px; }
+  #s1 h1 em { font-style: normal; color: var(--accent); }
+  #s1 .sub { font-size: 18px; color: var(--muted); max-width: 520px; line-height: 1.6; margin-bottom: 48px; }
+  #s1 .meta-row { display: flex; gap: 40px; align-items: center; }
+  #s1 .meta-item { display: flex; flex-direction: column; gap: 4px; }
   #s1 .meta-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
   #s1 .meta-val { font-size: 16px; color: var(--text); font-weight: 500; }
-  #s1 .divider-v {
-    width: 1px; height: 40px;
-    background: var(--border);
-  }
-  #s1 .deco {
-    position: absolute;
-    right: 80px; top: 50%;
-    transform: translateY(-50%);
-    width: 260px; height: 260px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--muted);
-    font-size: 13px;
-    letter-spacing: 0.06em;
-  }
-  #s1 .deco::before {
-    content: '';
-    position: absolute;
-    width: 200px; height: 200px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-  }
+  #s1 .divider-v { width: 1px; height: 40px; background: var(--border); }
+  #s1 .deco { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); width: 260px; height: 260px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  #s1 .deco::before { content: ''; position: absolute; width: 200px; height: 200px; border: 1px solid var(--border); border-radius: 50%; }
   #s1 .deco-text { color: var(--accent); font-family: 'Barlow', sans-serif; font-size: 36px; font-weight: 700; }
 
-  /* --- SLIDE 2: THE DIAGNOSIS --- */
-  .compare-grid {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 0;
-    margin-top: 32px;
-  }
-  .cg-col {
-    padding: 32px;
-    border-radius: 12px;
-  }
+  /* SLIDE 2 */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .cg-col { padding: 32px; border-radius: 12px; }
   .cg-col.theirs { background: rgba(224,90,75,0.07); border: 1px solid rgba(224,90,75,0.2); }
   .cg-col.ours { background: rgba(92,184,138,0.07); border: 1px solid rgba(92,184,138,0.2); }
-  .cg-divider { background: var(--border); }
-  .cg-tag {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
+  .cg-tag { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; }
   .cg-tag.red { color: var(--red); }
   .cg-tag.green { color: var(--green); }
-  .cg-stat {
-    font-family: 'Barlow', sans-serif;
-    font-size: 52px;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
+  .cg-stat { font-family: 'Barlow', sans-serif; font-size: 38px; font-weight: 900; line-height: 1; margin-bottom: 8px; }
   .cg-stat.red { color: var(--red); }
   .cg-stat.green { color: var(--green); }
-  .cg-sub { font-size: 14px; color: var(--muted); line-height: 1.5; }
-
-  .gap-note {
-    margin-top: 24px;
-    padding: 16px 20px;
-    background: var(--accent-dim);
-    border: 1px solid var(--accent-border);
-    border-radius: 8px;
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.6;
-  }
+  .cg-sub { font-size: 14px; color: var(--muted); line-height: 1.8; margin-top: 12px; }
+  .gap-note { margin-top: 24px; padding: 16px 20px; background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 8px; font-size: 14px; color: var(--text); line-height: 1.6; }
   .gap-note strong { color: var(--accent); }
 
-  /* --- SLIDE 3: THE 5 PROBLEMS --- */
-  .problem-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 28px;
-  }
-  .problem-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 18px 22px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    transition: border-color 0.2s;
-  }
+  /* SLIDE 3 */
+  .problem-list { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+  .problem-item { display: flex; align-items: flex-start; gap: 20px; padding: 18px 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; transition: border-color 0.2s; }
   .problem-item:hover { border-color: var(--accent-border); }
-  .p-num {
-    font-family: 'Barlow', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--accent);
-    min-width: 36px;
-    line-height: 1;
-  }
-  .p-body {}
+  .p-num { font-family: 'Barlow', sans-serif; font-size: 28px; font-weight: 700; color: var(--accent); min-width: 36px; line-height: 1; }
   .p-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
   .p-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-  /* --- SLIDE 4: MARKET OPPORTUNITY --- */
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 32px;
-  }
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 24px;
-    text-align: center;
-  }
-  .stat-big {
-    font-family: 'Barlow', sans-serif;
-    font-size: 48px;
-    font-weight: 900;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
+  /* SLIDE 4 */
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center; }
+  .stat-big { font-family: 'Barlow', sans-serif; font-size: 48px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 8px; }
   .stat-label { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .insight-box { margin-top: 24px; padding: 20px 24px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 8px 8px 0; font-size: 15px; color: var(--text); line-height: 1.65; }
 
-  .insight-box {
-    margin-top: 24px;
-    padding: 20px 24px;
-    border-left: 3px solid var(--accent);
-    background: var(--surface);
-    border-radius: 0 8px 8px 0;
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.65;
-  }
-
-  /* --- SLIDE 5: THE STRATEGY --- */
-  .phase-flow {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    margin-top: 32px;
-    position: relative;
-  }
-  .phase-flow::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: 28px;
-    right: 28px;
-    height: 1px;
-    background: var(--border);
-    z-index: 0;
-  }
-  .phase-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  .phase-dot {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2px solid var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Barlow', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
+  /* SLIDE 5 */
+  .phase-flow { display: flex; align-items: flex-start; gap: 0; margin-top: 32px; position: relative; }
+  .phase-flow::before { content: ''; position: absolute; top: 28px; left: 28px; right: 28px; height: 1px; background: var(--border); z-index: 0; }
+  .phase-item { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
+  .phase-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Barlow', sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
   .phase-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
   .phase-sub { font-size: 11px; color: var(--muted); line-height: 1.5; max-width: 120px; }
 
-  /* --- SLIDE 6: CONTENT SYSTEM --- */
-  .content-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 28px;
-  }
-  .content-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-  }
+  /* SLIDE 6 */
+  .content-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 28px; }
+  .content-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
   .cc-icon { font-size: 26px; margin-bottom: 12px; }
   .cc-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
   .cc-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
-  .cc-example {
-    margin-top: 12px;
-    padding: 10px 14px;
-    background: var(--accent-dim);
-    border-radius: 6px;
-    font-size: 12px;
-    color: var(--accent);
-    font-style: italic;
-  }
+  .cc-example { margin-top: 12px; padding: 10px 14px; background: var(--accent-dim); border-radius: 6px; font-size: 12px; color: var(--accent); font-style: italic; }
 
-  /* --- SLIDE 7: VIDEO SCRIPTS --- */
-  .script-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 28px;
-  }
-  .script-card {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 20px;
-    align-items: start;
-    padding: 22px 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-  }
-  .sc-num {
-    width: 56px; height: 56px;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--accent-dim);
-    border: 1px solid var(--accent-border);
-    border-radius: 8px;
-    font-family: 'Barlow', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .sc-body {}
+  /* SLIDE 7 */
+  .script-list { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+  .script-card { display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; padding: 22px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  .sc-num { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 8px; font-family: 'Barlow', sans-serif; font-size: 22px; font-weight: 700; color: var(--accent); }
   .sc-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
   .sc-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
 
-  /* --- SLIDE 8: LEAD FUNNEL --- */
-  .funnel-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 28px;
-    position: relative;
-  }
-  .funnel-step {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 18px 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-bottom: 4px;
-    position: relative;
-  }
-  .funnel-step::after {
-    content: '↓';
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--accent);
-    font-size: 14px;
-    z-index: 2;
-  }
+  /* SLIDE 8 */
+  .funnel-steps { display: flex; flex-direction: column; gap: 0; margin-top: 28px; }
+  .funnel-step { display: flex; align-items: center; gap: 20px; padding: 18px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 4px; position: relative; }
+  .funnel-step::after { content: '↓'; position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); color: var(--accent); font-size: 14px; z-index: 2; }
   .funnel-step:last-child::after { display: none; }
-  .fs-icon {
-    width: 44px; height: 44px;
-    background: var(--accent-dim);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
+  .fs-icon { width: 44px; height: 44px; background: var(--accent-dim); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
   .fs-body { flex: 1; }
   .fs-title { font-size: 14px; font-weight: 600; color: var(--text); }
   .fs-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .fs-cta {
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 500;
-    background: var(--accent-dim);
-    border-radius: 6px;
-    padding: 6px 12px;
-    flex-shrink: 0;
-  }
+  .fs-cta { font-size: 12px; color: var(--accent); font-weight: 500; background: var(--accent-dim); border-radius: 6px; padding: 6px 12px; flex-shrink: 0; }
 
-  /* --- SLIDE 9: OUTCOMES --- */
-  .timeline-phases {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 28px;
-  }
-  .tp-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .tp-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    opacity: 0.4;
-  }
-  .tp-phase {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-  .tp-metric {
-    font-family: 'Barlow', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .tp-metric .accent { color: var(--accent); }
+  /* SLIDE 9 */
+  .timeline-phases { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 28px; }
+  .tp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden; }
+  .tp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); opacity: 0.4; }
+  .tp-phase { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+  .tp-metric { font-family: 'Barlow', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 4px; }
   .tp-label { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
   .tp-list { list-style: none; }
-  .tp-list li {
-    font-size: 12px;
-    color: var(--muted);
-    padding: 4px 0;
-    border-top: 1px solid var(--border);
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
+  .tp-list li { font-size: 12px; color: var(--muted); padding: 4px 0; border-top: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-start; }
   .tp-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
 
-  /* --- SLIDE 10: PRICING --- */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 28px;
-  }
-  .price-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 26px;
-    position: relative;
-  }
-  .price-card.featured {
-    border-color: var(--accent-border);
-    background: var(--accent-dim);
-  }
-  .pc-tag {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-  .pc-tag.retainer { color: var(--muted); }
-  .pc-tag.growth { color: var(--accent); }
-  .pc-name { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-  .pc-price {
-    font-family: 'Barlow', sans-serif;
-    font-size: 36px;
-    font-weight: 900;
-    color: var(--accent);
-    margin-bottom: 4px;
-    line-height: 1;
-  }
-  .pc-per { font-size: 12px; color: var(--muted); margin-bottom: 18px; line-height: 1.4; }
-  .pc-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .pc-items li {
-    font-size: 13px;
-    color: var(--muted);
-    display: flex; gap: 10px; align-items: flex-start;
-  }
-  .pc-items li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  /* SLIDES 10 & 11: PRICING */
+  .phase-block { border-radius: 12px; padding: 22px 24px; }
+  .phase-block.p1 { background: rgba(92,184,138,0.08); border: 1px solid rgba(92,184,138,0.25); }
+  .pb-eyebrow { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+  .pb-eyebrow.green { color: var(--green); }
+  .pb-name { font-family: 'Barlow', sans-serif; font-weight: 700; color: var(--text); }
+  .pb-price { font-family: 'Barlow', sans-serif; font-weight: 900; color: var(--accent); line-height: 1; }
+  .pb-per { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .pb-loss { font-size: 12px; line-height: 1.5; padding: 8px 12px; border-radius: 6px; }
+  .pb-loss.green-loss { background: rgba(92,184,138,0.1); color: #5cb88a; }
+  .pb-items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .pb-items li { font-size: 12px; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+  .pb-items li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; font-size: 11px; margin-top: 1px; }
 
-  .addons-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 20px;
-  }
-  .addon-chip {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 16px;
-    text-align: center;
-  }
-  .ac-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; position: relative; }
+  .price-card.featured { border: 2px solid var(--blue-border); background: var(--blue-dim); }
+  .price-card.anchor-card { opacity: 0.95; }
+  .pop-label { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 0 0 6px 6px; white-space: nowrap; }
+  .pc-tag { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; display: inline-block; padding: 3px 8px; border-radius: 4px; }
+  .pc-tag.scale { background: rgba(232,201,122,0.15); color: var(--accent); }
+  .pc-tag.authority { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); }
+  .pc-tag.foundation { background: var(--surface2); color: var(--muted); }
+  .pc-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .pc-price { font-family: 'Barlow', sans-serif; font-size: 30px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 2px; }
+  .pc-per { font-size: 11px; color: var(--muted); margin-bottom: 10px; line-height: 1.4; }
+  .pc-loss { font-size: 11px; line-height: 1.45; padding: 7px 10px; border-radius: 6px; margin-bottom: 10px; }
+  .pc-loss.blue { background: var(--blue-dim); color: var(--blue); }
+  .pc-loss.amber { background: rgba(232,201,122,0.1); color: var(--accent); }
+  .pc-loss.grey { background: var(--surface2); color: var(--muted); }
+  .pc-items { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .pc-items li { font-size: 11px; color: var(--muted); display: flex; gap: 7px; align-items: flex-start; line-height: 1.35; }
+  .pc-items li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; font-size: 10px; margin-top: 1px; }
+  .price-card.anchor-card .pc-items li::before { color: var(--accent); }
+
+  .addons-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .addon-chip { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .addon-chip.featured-addon { border-color: rgba(92,184,138,0.3); background: rgba(92,184,138,0.07); }
+  .ac-title { font-size: 11px; color: var(--muted); margin-bottom: 4px; line-height: 1.4; }
   .ac-price { font-size: 13px; color: var(--accent); font-weight: 600; }
+  .addon-chip.featured-addon .ac-price { color: var(--green); }
 
-  /* --- SLIDE 11: ROI MATH --- */
-  .roi-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
-  }
-  .roi-box {
-    text-align: center;
-  }
-  .roi-num {
-    font-family: 'Barlow', sans-serif;
-    font-size: 64px;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
+  /* SLIDE 12: ROI */
+  .roi-visual { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 40px; }
+  .roi-box { text-align: center; }
+  .roi-num { font-family: 'Barlow', sans-serif; font-size: 64px; font-weight: 900; line-height: 1; margin-bottom: 8px; }
   .roi-label { font-size: 14px; color: var(--muted); }
-  .roi-op {
-    font-size: 48px;
-    color: var(--muted);
-    font-weight: 300;
-  }
-
-  .roi-note {
-    margin-top: 40px;
-    padding: 20px 28px;
-    background: var(--accent-dim);
-    border: 1px solid var(--accent-border);
-    border-radius: 10px;
-    text-align: center;
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.6;
-  }
+  .roi-op { font-size: 48px; color: var(--muted); font-weight: 300; }
+  .roi-note { margin-top: 40px; padding: 20px 28px; background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 10px; text-align: center; font-size: 15px; color: var(--text); line-height: 1.6; }
   .roi-note strong { color: var(--accent); }
 
-  /* --- SLIDE 12: CLOSE --- */
-  #s12 {
-    background: var(--bg);
-  }
-  #s12 .tag {
+  /* SLIDE 13: CLOSE — all styles scoped to #s13 to prevent bleed */
+  #s13 .tag {
     display: inline-block;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: var(--accent-dim);
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-dim);
     border: 1px solid var(--accent-border);
-    padding: 6px 16px;
-    border-radius: 100px;
-    margin-bottom: 32px;
-    font-weight: 500;
+    padding: 6px 16px; border-radius: 100px; margin-bottom: 32px; font-weight: 500;
   }
-  #s12 h2 {
+  #s13 h2 {
     font-family: 'Barlow', sans-serif;
     font-size: clamp(40px, 5vw, 66px);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 20px;
+    font-weight: 900; line-height: 1.1; margin-bottom: 20px;
   }
-  #s12 .sub {
-    font-size: 18px;
-    color: var(--muted);
-    line-height: 1.6;
-    max-width: 520px;
-    margin-bottom: 48px;
+  #s13 .sub {
+    font-size: 18px; color: var(--muted); line-height: 1.6; max-width: 520px; margin-bottom: 48px;
   }
-  .contact-row {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .contact-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  .contact-row { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .contact-item { display: flex; flex-direction: column; gap: 4px; }
   .ci-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
   .ci-val { font-size: 16px; color: var(--text); font-weight: 500; }
   .divider-v { width: 1px; height: 40px; background: var(--border); }
-
-  /* Slide header */
-  h2.slide-h {
-    font-family: 'Barlow', sans-serif;
-    font-size: clamp(30px, 3.5vw, 44px);
-    font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 6px;
-  }
-  .slide-desc {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 4px;
-  }
 </style>
 </head>
 <body>
@@ -672,28 +270,17 @@
   <div class="slide active" id="s1">
     <div class="slide-inner">
       <div class="eyebrow">Online Presence Proposal · 2026</div>
-      <h1>Building <em>Rai Fitness</em><br>That <em style="font-style:normal;color: var(--accent-alt);">Earns</em> the Lead<br>Before the Call.</h1>
+      <h1>Building <em>Rai Fitness</em><br>That <em style="font-style:normal;color:var(--accent-alt);">Earns</em> the Lead<br>Before the Call.</h1>
       <p class="sub">A strategic plan to grow Rai Fitness Equipment's digital presence, generate qualified enquiries, and increase sales conversions through social media.</p>
       <div class="meta-row">
-        <div class="meta-item">
-          <span class="meta-label">Prepared by</span>
-          <span class="meta-val">Shubham</span>
-        </div>
+        <div class="meta-item"><span class="meta-label">Prepared by</span><span class="meta-val">Shubham</span></div>
         <div class="divider-v"></div>
-        <div class="meta-item">
-          <span class="meta-label">Client</span>
-          <span class="meta-val">Rai Fitness Equipment</span>
-        </div>
+        <div class="meta-item"><span class="meta-label">Client</span><span class="meta-val">Rai Fitness Equipment</span></div>
         <div class="divider-v"></div>
-        <div class="meta-item">
-          <span class="meta-label">Date</span>
-          <span class="meta-val">April 2026</span>
-        </div>
+        <div class="meta-item"><span class="meta-label">Date</span><span class="meta-val">April 2026</span></div>
       </div>
     </div>
-    <div class="deco">
-      <span class="deco-text">RF</span>
-    </div>
+    <div class="deco"><span class="deco-text">RF</span></div>
   </div>
 
   <!-- SLIDE 2: DIAGNOSIS -->
@@ -702,31 +289,19 @@
       <div class="slide-label">The Diagnosis</div>
       <h2 class="slide-h">Great manufacturing legacy.<br>Invisible digital positioning.</h2>
       <p class="slide-desc" style="margin-top:8px;">Effort exists. Strategy doesn't.</p>
-      <div class="compare-grid" style="gap:16px; grid-template-columns: 1fr 1fr;">
+      <div class="compare-grid">
         <div class="cg-col theirs">
           <div class="cg-tag red">Rai Fitness — Today</div>
-          <div class="cg-stat red" style="font-size: 38px;">Scattered</div>
-          <div class="cg-sub" style="margin-top: 12px; line-height: 1.8;">
-            • Treated as a product catalogue<br>
-            • No cohesive brand voice<br>
-            • Unstructured social presence<br>
-            • Missing credibility markers
-          </div>
+          <div class="cg-stat red">Scattered</div>
+          <div class="cg-sub">• Treated as a product catalogue<br>• No cohesive brand voice<br>• Unstructured social presence<br>• Missing credibility markers</div>
         </div>
         <div class="cg-col ours">
           <div class="cg-tag green">FitLine India — Competitor</div>
-          <div class="cg-stat green" style="font-size: 38px;">Positioned</div>
-          <div class="cg-sub" style="margin-top: 12px; line-height: 1.8;">
-            • Positioned as industry authority<br>
-            • Premium visual identity<br>
-            • Purpose-driven strategy<br>
-            • High digital trust &amp; credibility
-          </div>
+          <div class="cg-stat green">Positioned</div>
+          <div class="cg-sub">• Positioned as industry authority<br>• Premium visual identity<br>• Purpose-driven strategy<br>• High digital trust &amp; credibility</div>
         </div>
       </div>
-      <div class="gap-note">
-        The difference is not about follower counts — it’s about <strong>brand perception and structure.</strong> FitLine looks like a premium market leader because of their deliberate positioning. Rai Fitness has the same capability but loses leads due to a fragmented digital identity.
-      </div>
+      <div class="gap-note">The difference is not about follower counts — it's about <strong>brand perception and structure.</strong> FitLine looks like a premium market leader because of their deliberate positioning. Rai Fitness has the same capability but loses leads due to a fragmented digital identity.</div>
     </div>
   </div>
 
@@ -736,41 +311,11 @@
       <div class="slide-label">Root Cause Analysis</div>
       <h2 class="slide-h">Five problems killing<br>the digital pipeline.</h2>
       <div class="problem-list">
-        <div class="problem-item">
-          <div class="p-num">01</div>
-          <div class="p-body">
-            <div class="p-title">Looks Like a Catalogue, Not a Brand</div>
-            <div class="p-desc">Product images with no story, no founder voice, no craft narrative. No emotional reason to follow or trust.</div>
-          </div>
-        </div>
-        <div class="problem-item">
-          <div class="p-num">02</div>
-          <div class="p-body">
-            <div class="p-title">Invisible to the Buyer in Research Mode</div>
-            <div class="p-desc">A gym entrepreneur in Hyderabad planning a setup will not find Rai Fitness through organic search or social discovery today.</div>
-          </div>
-        </div>
-        <div class="problem-item">
-          <div class="p-num">03</div>
-          <div class="p-body">
-            <div class="p-title">No Content That Builds Conviction</div>
-            <div class="p-desc">No installation walkthroughs, no client gym showcases, no numbers — "150 machines, Pune, delivered in 21 days."</div>
-          </div>
-        </div>
-        <div class="problem-item">
-          <div class="p-num">04</div>
-          <div class="p-body">
-            <div class="p-title">No Lead Capture System</div>
-            <div class="p-desc">No WhatsApp CTA, no lead magnet, no DM funnel. Visitors land and leave with no way to be followed up.</div>
-          </div>
-        </div>
-        <div class="problem-item">
-          <div class="p-num">05</div>
-          <div class="p-body">
-            <div class="p-title">Sales Calls Start From Zero</div>
-            <div class="p-desc">Without pre-education content, every sales conversation handles objections from scratch — slowing close rates.</div>
-          </div>
-        </div>
+        <div class="problem-item"><div class="p-num">01</div><div class="p-body"><div class="p-title">Looks Like a Catalogue, Not a Brand</div><div class="p-desc">Product images with no story, no founder voice, no craft narrative. No emotional reason to follow or trust.</div></div></div>
+        <div class="problem-item"><div class="p-num">02</div><div class="p-body"><div class="p-title">Invisible to the Buyer in Research Mode</div><div class="p-desc">A gym entrepreneur in Hyderabad planning a setup will not find Rai Fitness through organic search or social discovery today.</div></div></div>
+        <div class="problem-item"><div class="p-num">03</div><div class="p-body"><div class="p-title">No Content That Builds Conviction</div><div class="p-desc">No installation walkthroughs, no client gym showcases, no numbers — "150 machines, Pune, delivered in 21 days."</div></div></div>
+        <div class="problem-item"><div class="p-num">04</div><div class="p-body"><div class="p-title">No Lead Capture System</div><div class="p-desc">No WhatsApp CTA, no lead magnet, no DM funnel. Visitors land and leave with no way to be followed up.</div></div></div>
+        <div class="problem-item"><div class="p-num">05</div><div class="p-body"><div class="p-title">Sales Calls Start From Zero</div><div class="p-desc">Without pre-education content, every sales conversation handles objections from scratch — slowing close rates.</div></div></div>
       </div>
     </div>
   </div>
@@ -781,60 +326,27 @@
       <div class="slide-label">The Opportunity</div>
       <h2 class="slide-h">The market is growing.<br>The buyers are already online.</h2>
       <div class="stat-row">
-        <div class="stat-card">
-          <div class="stat-big">75%</div>
-          <div class="stat-label">of B2B buyers research vendors online before making a single call</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-big">₹4B</div>
-          <div class="stat-label">India's digital fitness market, growing at 13% CAGR through 2029</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-big">Tier 2</div>
-          <div class="stat-label">Cities are the fastest-growing market for new gym setups in India right now</div>
-        </div>
+        <div class="stat-card"><div class="stat-big">75%</div><div class="stat-label">of B2B buyers research vendors online before making a single call</div></div>
+        <div class="stat-card"><div class="stat-big">₹4B</div><div class="stat-label">India's digital fitness market, growing at 13% CAGR through 2029</div></div>
+        <div class="stat-card"><div class="stat-big">Tier 2</div><div class="stat-label">Cities are the fastest-growing market for new gym setups in India right now</div></div>
       </div>
-      <div class="insight-box">
-        New gym entrepreneurs in Nashik, Indore, Lucknow, and Surat are younger, digitally native, and make their vendor shortlist entirely from Instagram and Google — before they call anyone. If Rai Fitness doesn't show up credibly in that discovery phase, the lead goes to FitLine or KFS. The cost of inaction is <u>every one of those lost leads.</u>
-      </div>
+      <div class="insight-box">New gym entrepreneurs in Nashik, Indore, Lucknow, and Surat are younger, digitally native, and make their vendor shortlist entirely from Instagram and Google — before they call anyone. If Rai Fitness doesn't show up credibly in that discovery phase, the lead goes to FitLine or KFS. The cost of inaction is <u>every one of those lost leads.</u></div>
     </div>
   </div>
 
-  <!-- SLIDE 5: THE STRATEGY PHASES -->
+  <!-- SLIDE 5: STRATEGY -->
   <div class="slide" id="s5">
     <div class="slide-inner">
       <div class="slide-label">The Plan</div>
       <h2 class="slide-h">Five phases. One systematic<br>growth engine.</h2>
       <div class="phase-flow">
-        <div class="phase-item">
-          <div class="phase-dot">1</div>
-          <div class="phase-title">Brand Foundation</div>
-          <div class="phase-sub">Profile rehab, website fixes, media kit</div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">2</div>
-          <div class="phase-title">Content System</div>
-          <div class="phase-sub">4 content types, 18–20 posts/month</div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">3</div>
-          <div class="phase-title">Video Scripts</div>
-          <div class="phase-sub">3 strategic scripts monthly</div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">4</div>
-          <div class="phase-title">Lead Capture</div>
-          <div class="phase-sub">DM funnel, lead magnet, LinkedIn outreach</div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">5</div>
-          <div class="phase-title">Brand Perception</div>
-          <div class="phase-sub">Founder story, manufacturer positioning, visual identity</div>
-        </div>
+        <div class="phase-item"><div class="phase-dot">1</div><div class="phase-title">Brand Foundation</div><div class="phase-sub">Profile rehab, website fixes, media kit</div></div>
+        <div class="phase-item"><div class="phase-dot">2</div><div class="phase-title">Content System</div><div class="phase-sub">4 content types, 18–20 posts/month</div></div>
+        <div class="phase-item"><div class="phase-dot">3</div><div class="phase-title">Video Scripts</div><div class="phase-sub">3 strategic scripts monthly</div></div>
+        <div class="phase-item"><div class="phase-dot">4</div><div class="phase-title">Lead Capture</div><div class="phase-sub">DM funnel, lead magnet, LinkedIn outreach</div></div>
+        <div class="phase-item"><div class="phase-dot">5</div><div class="phase-title">Brand Perception</div><div class="phase-sub">Founder story, manufacturer positioning, visual identity</div></div>
       </div>
-      <div class="gap-note" style="margin-top:32px;">
-        Each phase builds on the last. Phase 1 alone — fixing the Instagram profile and adding a WhatsApp CTA — can generate <strong>40–60% more enquiries</strong> in the first 30 days without a single new post.
-      </div>
+      <div class="gap-note" style="margin-top:32px;">Each phase builds on the last. Phase 1 alone — fixing the Instagram profile and adding a WhatsApp CTA — can generate <strong>40–60% more enquiries</strong> in the first 30 days without a single new post.</div>
     </div>
   </div>
 
@@ -844,30 +356,10 @@
       <div class="slide-label">Phase 2 — Content System</div>
       <h2 class="slide-h">Four content types.<br>Each one does a specific job.</h2>
       <div class="content-grid">
-        <div class="content-card">
-          <div class="cc-icon">🏗️</div>
-          <div class="cc-title">Credibility Content</div>
-          <div class="cc-desc">Factory floor reels, weld quality close-ups, manufacturing process. Answers: "Can I trust this brand?"</div>
-          <div class="cc-example">"Every machine starts here — our Vasai factory floor."</div>
-        </div>
-        <div class="content-card">
-          <div class="cc-icon">📚</div>
-          <div class="cc-title">Education Content</div>
-          <div class="cc-desc">Gym setup guides, equipment checklists, buyer tips. Gets saved &amp; shared — highest algorithmic signal.</div>
-          <div class="cc-example">"5 things no one tells you before buying commercial gym equipment."</div>
-        </div>
-        <div class="content-card">
-          <div class="cc-icon">⭐</div>
-          <div class="cc-title">Social Proof Content</div>
-          <div class="cc-desc">Client gym walkthroughs, before/after installs, testimonial reels. Removes hesitation in warm leads.</div>
-          <div class="cc-example">"150 machines. Pune. Setup in 21 days."</div>
-        </div>
-        <div class="content-card">
-          <div class="cc-icon">📩</div>
-          <div class="cc-title">Lead Generation Content</div>
-          <div class="cc-desc">Keyword CTAs, catalogue drops, WhatsApp hooks. Designed not for likes — but for DMs and enquiries.</div>
-          <div class="cc-example">"DM 'SETUP' to get our free 2026 Gym Planning Guide."</div>
-        </div>
+        <div class="content-card"><div class="cc-icon">🏗️</div><div class="cc-title">Credibility Content</div><div class="cc-desc">Factory floor reels, weld quality close-ups, manufacturing process. Answers: "Can I trust this brand?"</div><div class="cc-example">"Every machine starts here — our Vasai factory floor."</div></div>
+        <div class="content-card"><div class="cc-icon">📚</div><div class="cc-title">Education Content</div><div class="cc-desc">Gym setup guides, equipment checklists, buyer tips. Gets saved &amp; shared — highest algorithmic signal.</div><div class="cc-example">"5 things no one tells you before buying commercial gym equipment."</div></div>
+        <div class="content-card"><div class="cc-icon">⭐</div><div class="cc-title">Social Proof Content</div><div class="cc-desc">Client gym walkthroughs, before/after installs, testimonial reels. Removes hesitation in warm leads.</div><div class="cc-example">"150 machines. Pune. Setup in 21 days."</div></div>
+        <div class="content-card"><div class="cc-icon">📩</div><div class="cc-title">Lead Generation Content</div><div class="cc-desc">Keyword CTAs, catalogue drops, WhatsApp hooks. Designed not for likes — but for DMs and enquiries.</div><div class="cc-example">"DM 'SETUP' to get our free 2026 Gym Planning Guide."</div></div>
       </div>
     </div>
   </div>
@@ -878,27 +370,9 @@
       <div class="slide-label">Phase 3 — Video Strategy</div>
       <h2 class="slide-h">3 scripts per month.<br>Each one is a sales tool in disguise.</h2>
       <div class="script-list">
-        <div class="script-card">
-          <div class="sc-num">01</div>
-          <div class="sc-body">
-            <div class="sc-title">The Factory Floor Reel</div>
-            <div class="sc-desc">Raw, real, 30–45 sec. Manufacturing process footage with voiceover. Builds trust that competitors who just resell imported equipment can never replicate. Target reach: 50K–200K views per Reel once algorithm momentum builds.</div>
-          </div>
-        </div>
-        <div class="script-card">
-          <div class="sc-num">02</div>
-          <div class="sc-body">
-            <div class="sc-title">The Buyer Education Reel</div>
-            <div class="sc-desc">45–60 sec. Addresses one question a gym entrepreneur is actively Googling. Positions Rai Fitness as the expert, not just the vendor. High save rate = algorithm push to non-followers.</div>
-          </div>
-        </div>
-        <div class="script-card">
-          <div class="sc-num">03</div>
-          <div class="sc-body">
-            <div class="sc-title">The Client Gym Showcase</div>
-            <div class="sc-desc">30–45 sec walkthrough of a real installed gym with stats — city, machine count, timeline. The most powerful conversion content because it answers: "Have they done this before? Can they do it for me?"</div>
-          </div>
-        </div>
+        <div class="script-card"><div class="sc-num">01</div><div class="sc-body"><div class="sc-title">The Factory Floor Reel</div><div class="sc-desc">Raw, real, 30–45 sec. Manufacturing process footage with voiceover. Builds trust that competitors who just resell imported equipment can never replicate. Target reach: 50K–200K views per Reel once algorithm momentum builds.</div></div></div>
+        <div class="script-card"><div class="sc-num">02</div><div class="sc-body"><div class="sc-title">The Buyer Education Reel</div><div class="sc-desc">45–60 sec. Addresses one question a gym entrepreneur is actively Googling. Positions Rai Fitness as the expert, not just the vendor. High save rate = algorithm push to non-followers.</div></div></div>
+        <div class="script-card"><div class="sc-num">03</div><div class="sc-body"><div class="sc-title">The Client Gym Showcase</div><div class="sc-desc">30–45 sec walkthrough of a real installed gym with stats — city, machine count, timeline. The most powerful conversion content because it answers: "Have they done this before? Can they do it for me?"</div></div></div>
       </div>
     </div>
   </div>
@@ -909,38 +383,10 @@
       <div class="slide-label">Phase 4 — Lead Capture</div>
       <h2 class="slide-h">From a scroll to a<br>sales-ready conversation.</h2>
       <div class="funnel-steps">
-        <div class="funnel-step">
-          <div class="fs-icon">📱</div>
-          <div class="fs-body">
-            <div class="fs-title">Reel or Post CTA</div>
-            <div class="fs-sub">Drives viewer to DM a keyword: "SETUP" or "CATALOGUE"</div>
-          </div>
-          <div class="fs-cta">Instagram Reel</div>
-        </div>
-        <div class="funnel-step">
-          <div class="fs-icon">💬</div>
-          <div class="fs-body">
-            <div class="fs-title">DM Reply + WhatsApp Link</div>
-            <div class="fs-sub">Instant reply routes lead to WhatsApp with context</div>
-          </div>
-          <div class="fs-cta">DM Funnel</div>
-        </div>
-        <div class="funnel-step">
-          <div class="fs-icon">📋</div>
-          <div class="fs-body">
-            <div class="fs-title">WhatsApp Qualification</div>
-            <div class="fs-sub">Template collects: name, city, facility type, budget, timeline</div>
-          </div>
-          <div class="fs-cta">WhatsApp</div>
-        </div>
-        <div class="funnel-step">
-          <div class="fs-icon">🎯</div>
-          <div class="fs-body">
-            <div class="fs-title">Warm Lead Handed to Sales</div>
-            <div class="fs-sub">Sales team receives pre-qualified contact — no cold starts</div>
-          </div>
-          <div class="fs-cta">Sales Ready</div>
-        </div>
+        <div class="funnel-step"><div class="fs-icon">📱</div><div class="fs-body"><div class="fs-title">Reel or Post CTA</div><div class="fs-sub">Drives viewer to DM a keyword: "SETUP" or "CATALOGUE"</div></div><div class="fs-cta">Instagram Reel</div></div>
+        <div class="funnel-step"><div class="fs-icon">💬</div><div class="fs-body"><div class="fs-title">DM Reply + WhatsApp Link</div><div class="fs-sub">Instant reply routes lead to WhatsApp with context</div></div><div class="fs-cta">DM Funnel</div></div>
+        <div class="funnel-step"><div class="fs-icon">📋</div><div class="fs-body"><div class="fs-title">WhatsApp Qualification</div><div class="fs-sub">Template collects: name, city, facility type, budget, timeline</div></div><div class="fs-cta">WhatsApp</div></div>
+        <div class="funnel-step"><div class="fs-icon">🎯</div><div class="fs-body"><div class="fs-title">Warm Lead Handed to Sales</div><div class="fs-sub">Sales team receives pre-qualified contact — no cold starts</div></div><div class="fs-cta">Sales Ready</div></div>
       </div>
     </div>
   </div>
@@ -951,163 +397,158 @@
       <div class="slide-label">Expected Outcomes</div>
       <h2 class="slide-h">What the outlook will be like<br>at 3, 6, and 12 months.</h2>
       <div class="timeline-phases">
-        <div class="tp-card">
-          <div class="tp-phase">Month 1–3</div>
-          <div class="tp-metric" style="font-size:28px;">Credibility Base</div>
-          <div class="tp-label">Establish brand base and credibility ground</div>
-          <ul class="tp-list">
-            <li>Professional profile aesthetic secured</li>
-            <li>Core brand messaging published</li>
-            <li>Competitor gap begins closing</li>
-          </ul>
-        </div>
-        <div class="tp-card">
-          <div class="tp-phase">Month 3–6</div>
-          <div class="tp-metric" style="font-size:28px;">Views &amp; Leads</div>
-          <div class="tp-label">Drive targeted views to gather more enquiries</div>
-          <ul class="tp-list">
-            <li>Lead magnet + DM funnel live</li>
-            <li>Content reaching active gym buyers</li>
-            <li>Consistent lead flow established</li>
-          </ul>
-        </div>
-        <div class="tp-card">
-          <div class="tp-phase">Month 6–12</div>
-          <div class="tp-metric" style="font-size:28px;">Warm Audience</div>
-          <div class="tp-label">Aiming for converting buyers, not lakhs of followers</div>
-          <ul class="tp-list">
-            <li>Focus shifted to "better followers"</li>
-            <li>Potential leads warmed by content</li>
-            <li>High visibility resulting in conversions</li>
-          </ul>
-        </div>
+        <div class="tp-card"><div class="tp-phase">Month 1–3</div><div class="tp-metric">Credibility Base</div><div class="tp-label">Establish brand base and credibility ground</div><ul class="tp-list"><li>Professional profile aesthetic secured</li><li>Core brand messaging published</li><li>Competitor gap begins closing</li></ul></div>
+        <div class="tp-card"><div class="tp-phase">Month 3–6</div><div class="tp-metric">Views &amp; Leads</div><div class="tp-label">Drive targeted views to gather more enquiries</div><ul class="tp-list"><li>Lead magnet + DM funnel live</li><li>Content reaching active gym buyers</li><li>Consistent lead flow established</li></ul></div>
+        <div class="tp-card"><div class="tp-phase">Month 6–12</div><div class="tp-metric">Warm Audience</div><div class="tp-label">Aiming for converting buyers, not lakhs of followers</div><ul class="tp-list"><li>Focus shifted to "better followers"</li><li>Potential leads warmed by content</li><li>High visibility resulting in conversions</li></ul></div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 10: PRICING -->
+  <!-- SLIDE 10: PRICING PART 1 — WEBSITE -->
   <div class="slide" id="s10">
     <div class="slide-inner">
-      <div class="slide-label">The Investment</div>
-      <h2 class="slide-h">Three flexible options.<br>One-time project add-ons.</h2>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="pc-tag retainer">Option 1 — Monthly Flex</div>
-          <div class="pc-name">Basic Retainer</div>
-          <div class="pc-price">₹30K</div>
-          <div class="pc-per">per month (No Lock-in)</div>
+      <div class="slide-label">The Investment · Step 1 of 2</div>
+      <h2 class="slide-h">Before anything else —<br>fix what buyers land on.</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;">
+        <div class="phase-block p1" style="display:flex;flex-direction:column;gap:0;">
+          <div class="pb-eyebrow green">Phase 1 — One-Time · Do This First</div>
+          <div class="pb-name" style="font-size:22px;margin-bottom:6px;">Website Rehaul &amp; Brand Identity</div>
+          <div class="pb-price" style="font-size:44px;">₹75,000</div>
+          <div class="pb-per" style="font-size:13px;margin-bottom:16px;">One-time investment · Delivered in 3–4 weeks · Funnel-optimised</div>
+          <div class="pb-loss green-loss" style="font-size:13px;margin-bottom:16px;">Without this, every rupee on content sends buyers to a site that loses them. Fix the foundation before building the house.</div>
+          <ul class="pb-items">
+            <li>Full website restructure with a conversion-first flow</li>
+            <li>SEO-ready product pages written for buyer intent</li>
+            <li>WhatsApp floating CTA + frictionless enquiry form</li>
+            <li>Trust signals — real testimonials, certifications, project counters</li>
+            <li>Google Maps embed + local SEO groundwork</li>
+            <li>Mobile-first design with speed optimisation</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 24px;">
+            <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:12px;">Why Phase 1 comes first</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.7;">A polished website is the multiplier behind every social post, every reel, and every WhatsApp click. It is the place all your leads land. Without it, the retainer is pouring water into a leaking bucket.</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 24px;">
+            <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:14px;">What changes immediately after launch</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:14px;align-items:flex-start;"><div style="min-width:36px;font-family:'Barlow',sans-serif;font-size:22px;font-weight:700;color:var(--accent);line-height:1;">01</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Visitors can enquire without OTP friction — conversion goes up immediately</div></div>
+              <div style="display:flex;gap:14px;align-items:flex-start;"><div style="min-width:36px;font-family:'Barlow',sans-serif;font-size:22px;font-weight:700;color:var(--accent);line-height:1;">02</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">WhatsApp button makes every page a lead capture point, not a dead end</div></div>
+              <div style="display:flex;gap:14px;align-items:flex-start;"><div style="min-width:36px;font-family:'Barlow',sans-serif;font-size:22px;font-weight:700;color:var(--accent);line-height:1;">03</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Google begins indexing product pages — organic discovery starts compounding</div></div>
+              <div style="display:flex;gap:14px;align-items:flex-start;"><div style="min-width:36px;font-family:'Barlow',sans-serif;font-size:22px;font-weight:700;color:var(--accent);line-height:1;">04</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Every rupee spent on social retainer now has a credible destination to land</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gap-note" style="margin-top:20px;"><strong>The ask:</strong> Approve Phase 1 first. Once live, we move into the monthly retainer on the next slide. This is the correct sequence — and the most cost-efficient path to results.</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: PRICING PART 2 — RETAINER PLANS -->
+  <div class="slide" id="s11">
+    <div class="slide-inner">
+      <div class="slide-label">The Investment · Step 2 of 2</div>
+      <h2 class="slide-h">Three retainer plans.<br>All 3-month minimum.</h2>
+      <div class="pricing-grid" style="margin-top:22px;">
+        <div class="price-card anchor-card">
+          <div class="pc-tag scale">Scale Plan — Full Stack</div>
+          <div class="pc-name">Revenue Engine</div>
+          <div class="pc-price">₹74,500</div>
+          <div class="pc-per">Billed ₹2.23L upfront · 3-month sprint<br>Lock in your growth window</div>
+          <div class="pc-loss amber">Every gym owner who finds a competitor before finding you is a ₹2–8L order lost. This plan closes that gap completely.</div>
           <ul class="pc-items">
-            <li>Social media basic strategy</li>
-            <li>3 scripted video strategies</li>
-            <li>18–20 posts/month (1 Platform)</li>
-            <li>Month-to-month flexibility</li>
-            <li>DM and comment monitoring</li>
-            <li>Monthly content calendar</li>
+            <li>Everything in Authority Plan</li>
+            <li>Instagram DM funnel — auto-qualify leads 24/7</li>
+            <li>LinkedIn outreach to gym entrepreneurs &amp; HR buyers</li>
+            <li>WhatsApp broadcast system setup</li>
+            <li>Bi-weekly competitor intelligence report</li>
+            <li>Monthly strategy war room call (90 min)</li>
+            <li>Google Business Profile management</li>
+            <li>Reel scripting + hook writing for viral potential</li>
+            <li>Quarterly brand positioning audit</li>
+            <li>Lead tracking dashboard — every enquiry source visible</li>
           </ul>
         </div>
         <div class="price-card featured">
-          <div class="pc-tag growth">Option 2 — 6-Month Lock-in</div>
-          <div class="pc-name">Core Retainer</div>
-          <div class="pc-price">₹25K</div>
-          <div class="pc-per">/mo (Billed ₹1.5L upfront for 6 mos)</div>
+          <div class="pop-label">Most Popular</div>
+          <div class="pc-tag authority">Authority Plan — Recommended</div>
+          <div class="pc-name">Core Growth</div>
+          <div class="pc-price">₹38,500</div>
+          <div class="pc-per">Billed ₹1.15L upfront · Secured at this rate, never revisited</div>
+          <div class="pc-loss blue">3 months is the minimum for a brand to shift from invisible to credible. One gym client per month pays for this plan 5–10× over.</div>
           <ul class="pc-items">
-            <li>Everything in Option 1</li>
-            <li>Save ₹30,000 over 6 months</li>
-            <li>Dedicated 6-month strategic focus</li>
+            <li>Everything in Foundation Plan</li>
+            <li>Dedicated 3-month strategic focus</li>
             <li>Priority content production</li>
-            <li>Monthly performance reports</li>
-            <li>Ideal for establishing credibility</li>
+            <li>Monthly performance report with next steps</li>
+            <li>Monthly strategy call (60 min)</li>
+            <li>Instagram story funnels + highlight architecture</li>
+            <li>Hashtag &amp; keyword strategy for gym entrepreneurs</li>
+            <li>Ideal for establishing authority + consistent leads</li>
           </ul>
         </div>
         <div class="price-card">
-          <div class="pc-tag growth">Option 3 — Lead Engine</div>
-          <div class="pc-name">Quarterly Growth</div>
-          <div class="pc-price">₹75K</div>
-          <div class="pc-per">/mo (Billed ₹2.25L upfront for 3 mos)</div>
+          <div class="pc-tag foundation">Foundation Plan — Entry</div>
+          <div class="pc-name">Presence</div>
+          <div class="pc-price">₹32,500</div>
+          <div class="pc-per">Billed ₹97,500 upfront · 3-month commitment</div>
+          <div class="pc-loss grey">Inconsistent presence is worse than no presence. Buyers check Instagram before they ever call.</div>
           <ul class="pc-items">
-            <li>Everything in Option 2</li>
-            <li>Instagram DM funnel setup</li>
-            <li>LinkedIn outreach &amp; tracking</li>
-            <li>WhatsApp broadcast setups</li>
-            <li>Bi-weekly competitor report</li>
+            <li>Social media strategy — 1 platform</li>
+            <li>3 scripted video strategies/month</li>
+            <li>18–20 posts/month with outcome-led copy</li>
+            <li>DM &amp; comment monitoring</li>
+            <li>Monthly content calendar</li>
+            <li>Hashtag research included</li>
           </ul>
         </div>
       </div>
-      <div class="addons-row">
-        <div class="addon-chip">
-          <div class="ac-title">Extra Platform (e.g. LinkedIn, FB)</div>
-          <div class="ac-price">₹7K/mo per platform</div>
-        </div>
-        <div class="addon-chip">
-          <div class="ac-title">Website Rehaul &amp; Brand Identity (Funnel Optimized)</div>
-          <div class="ac-price">₹50K one-time</div>
-        </div>
-        <div class="addon-chip">
-          <div class="ac-title">Equipment Media Kit</div>
-          <div class="ac-price">₹15–25K one-time</div>
-        </div>
+      <div class="addons-row" style="margin-top:18px;">
+        <div class="addon-chip"><div class="ac-title">Extra platform (LinkedIn, Facebook, YouTube)</div><div class="ac-price">₹8,500/mo per platform</div></div>
+        <div class="addon-chip featured-addon"><div class="ac-title">Equipment media kit — photos, specs, sales-ready assets</div><div class="ac-price">₹10–25K one-time</div></div>
+        <div class="addon-chip"><div class="ac-title">Scale seamlessly with add-ons as per requirements — Catalogue Design, Pitch Decks, Inbound Leads, Backlinking</div><div class="ac-price"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 11: ROI MATH -->
-  <div class="slide" id="s11">
+  <!-- SLIDE 12: ROI MATH -->
+  <div class="slide" id="s12">
     <div class="slide-inner">
       <div class="slide-label">The Return</div>
       <h2 class="slide-h">One order pays for<br>the entire year.</h2>
       <div class="roi-visual">
-        <div class="roi-box">
-          <div class="roi-num" style="color: var(--muted);">₹25K</div>
-          <div class="roi-label">Monthly retainer</div>
-        </div>
+        <div class="roi-box"><div class="roi-num" style="color:var(--muted);">₹38K</div><div class="roi-label">Monthly retainer</div></div>
         <div class="roi-op">vs</div>
-        <div class="roi-box">
-          <div class="roi-num" style="color: var(--accent);">₹5L+</div>
-          <div class="roi-label">Avg. single gym setup order value</div>
-        </div>
+        <div class="roi-box"><div class="roi-num" style="color:var(--accent);">₹5L+</div><div class="roi-label">Avg. single gym setup order value</div></div>
         <div class="roi-op">=</div>
-        <div class="roi-box">
-          <div class="roi-num" style="color: var(--green);">20×</div>
-          <div class="roi-label">Return on a single closed lead</div>
-        </div>
+        <div class="roi-box"><div class="roi-num" style="color:var(--green);">13×</div><div class="roi-label">Return on a single closed lead</div></div>
       </div>
-      <div class="roi-note">
-        This is not a marketing expense. It is the <strong>cheapest salesperson Rai Fitness will ever hire.</strong><br>
-        One incremental gym setup order per month — attributable to social — covers the retainer <strong>20 times over.</strong>
-      </div>
+      <div class="roi-note">This is not a marketing expense. It is the <strong>cheapest salesperson Rai Fitness will ever hire.</strong><br>One incremental gym setup order per month — attributable to social — covers the retainer <strong>13× over.</strong></div>
     </div>
   </div>
 
-  <!-- SLIDE 12: CLOSE -->
-  <div class="slide" id="s12">
+  <!-- SLIDE 13: CLOSE -->
+  <div class="slide" id="s13">
     <div class="slide-inner">
       <div class="tag">Proposal · Rai Fitness Equipment</div>
-      <h2>20 Years of Craft.<br>It's time the <em style="font-style:normal;color: var(--accent-alt);">Internet</em><br>Discovers <em style="font-style:normal;color: var(--accent);">Rai Fitness</em>.</h2>
-      <p class="sub">Let's start with a 3-month engagement, show real follower growth and inbound leads within 60 days, and build from there.</p>
+      <h2>20 Years of Craft.<br>It's time the <em style="font-style:normal;color:var(--accent-alt);">Internet</em><br>Discovers <em style="font-style:normal;color:var(--accent);">Rai Fitness</em>.</h2>
+      <p class="sub">Let's start with the website rehaul, then lock in a 3-month retainer — and show real inbound leads within 60 days.</p>
       <div class="contact-row">
-        <div class="contact-item">
-          <span class="ci-label">Strategist</span>
-          <span class="ci-val">Shubham</span>
-        </div>
+        <div class="contact-item"><span class="ci-label">Strategist</span><span class="ci-val">Shubham</span></div>
         <div class="divider-v"></div>
-        <div class="contact-item">
-          <span class="ci-label">Engagement Start</span>
-          <span class="ci-val">On Agreement</span>
-        </div>
+        <div class="contact-item"><span class="ci-label">Engagement Start</span><span class="ci-val">On Agreement</span></div>
         <div class="divider-v"></div>
-        <div class="contact-item">
-          <span class="ci-label">Review Point</span>
-          <span class="ci-val">Day 90 — KPI Report</span>
-        </div>
+        <div class="contact-item"><span class="ci-label">Review Point</span><span class="ci-val">Day 90 — KPI Report</span></div>
       </div>
     </div>
   </div>
 
-</div><!-- end deck -->
+</div>
 
 <div id="nav">
   <button class="nav-btn" id="prev">←</button>
-  <span id="counter">1 / 12</span>
+  <span id="counter">1 / 13</span>
   <button class="nav-btn" id="next">→</button>
 </div>
 
@@ -1121,8 +562,7 @@
     current = (n + total) % total;
     slides[current].classList.add('active');
     document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
-    const pct = ((current + 1) / total) * 100;
-    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-bar').style.width = ((current + 1) / total * 100) + '%';
   }
 
   document.getElementById('next').addEventListener('click', () => goTo(current + 1));
@@ -1133,7 +573,6 @@
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
   });
 
-  // Touch swipe
   let startX = 0;
   document.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
   document.addEventListener('touchend', e => {
